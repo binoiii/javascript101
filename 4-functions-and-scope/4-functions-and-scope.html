@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Functions and Scope</title>
+  </head>
+  <body>
+    <h1>Functions and Scope</h1>
+  </body>
+  <script>
+    // Global
+    const givenName = 'John'
+
+    function printGivenName() {
+      console.log(givenName)
+    }
+
+    function printFullName() {
+      const familyName = 'Doe'
+      console.log(`${givenName} ${familyName}`)
+    }
+
+    function printHomeAddress() {
+      // Local
+      const homeAddress = '123 Main St'
+      console.log(homeAddress)
+    }
+
+    function printOfficeAddress() {
+      // Local
+      const officeAddress = '456 Main St'
+      console.log(officeAddress)
+    }
+  </script>
+</html>

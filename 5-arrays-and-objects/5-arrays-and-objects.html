@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Arrays and Objects</title>
+  </head>
+  <body>
+    <h1>User Profile</h1>
+    <ul id="data-list"></ul>
+  </body>
+  <script>
+    // 1. Receive data from the server
+    const data = [
+      {
+        name: 'John Doe',
+        age: 21,
+        sports: ['football', 'basketball'],
+      },
+      {
+        name: 'Mike Tyson',
+        age: 32,
+        sports: ['boxing', 'chess'],
+      },
+    ]
+
+    // 2. Display the data on the page
+    // 2.1 Target the element where the data will be displayed
+    const dataList = document.getElementById('data-list')
+
+    // 2.2 Loop through the data and display it (forEach)
+    objectData.forEach((item) => {
+      const listItem = document.createElement('li')
+
+      // 2.3 Loop through the sports array and display it (map)
+      const sportsList = item.sports
+        .map((sport) => `<li>${sport}</li>`)
+        //output: [<li>football</li>, <li>basketball</li>]
+        .join('')
+      //output: <li>football</li><li>basketball</li>
+
+      // 2.5 Set the content of the list item
+      listItem.innerHTML = `
+        <h3>${item.name}</h3>
+        <p>Age: ${item.age}</p>
+        <ul>${sportsList}</ul>
+      `
+
+      // 2.6 Append the list item to the list
+      dataList.appendChild(listItem)
+    })
+  </script>
+</html>

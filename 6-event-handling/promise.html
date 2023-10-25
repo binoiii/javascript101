@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Promise</title>
+  </head>
+  <body>
+    <h1>Promises</h1>
+    <p id="response"></p>
+  </body>
+  <script>
+    const responseElement = document.getElementById('response')
+
+    // Creating a Promise
+    const myPromise = new Promise((resolve, reject) => {
+      // Asynchronous operation
+      setTimeout(() => {
+        const randomNum = Math.random()
+        if (randomNum < 0.5) {
+          resolve('Success: ' + randomNum)
+        } else {
+          reject('Error: ' + randomNum)
+        }
+      }, 5000)
+    })
+
+    // Handling Promises
+    myPromise
+      .then((result) => {
+        responseElement.innerHTML = result
+        responseElement.style.color = 'green'
+        console.log(result) // Output: "Success: 0.23456"
+      })
+      .catch((error) => {
+        responseElement.innerHTML = error
+        responseElement.style.color = 'red'
+        console.error(error) // Output: "Error: 0.789"
+      })
+
+    // Try catch syntax
+    // Creating a Promise
+    const myPromiseAgain = () => {
+      return new Promise((resolve, reject) => {
+        // Asynchronous operation
+        setTimeout(() => {
+          const randomNum = Math.random()
+          if (randomNum < 0.5) {
+            resolve('Success: ' + randomNum)
+          } else {
+            reject('Error: ' + randomNum)
+          }
+        }, 5000)
+      })
+    }
+
+    const handlePromise = async () => {
+      try {
+        const result = await myPromiseAgain()
+        responseElement.innerHTML = result
+        responseElement.style.color = 'green'
+        console.log(result) // Output: "Success: 0.23456"
+      } catch (error) {
+        responseElement.innerHTML = error
+        responseElement.style.color = 'red'
+        console.error(error) // Output: "Error: 0.789"
+      }
+    }
+
+    handlePromise()
+  </script>
+</html>
